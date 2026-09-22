@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>AutoDimToGrid – Revit Add-in</title>
+<style>
+  :root{
+    --bg:#f4f5f7; --card:#ffffff; --text:#1a1d23; --muted:#5b6270;
+    --accent:#2563eb; --accent-dark:#1d4ed8; --border:#e3e5e9;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14161a; --card:#1c1f26; --text:#eef0f3; --muted:#9aa1ac;
+      --accent:#4f8cff; --accent-dark:#3b78f0; --border:#2b2f38;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14161a; --card:#1c1f26; --text:#eef0f3; --muted:#9aa1ac;
+    --accent:#4f8cff; --accent-dark:#3b78f0; --border:#2b2f38;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    display:flex; justify-content:center; padding:48px 16px;
+  }
+  .card{
+    background:var(--card); border:1px solid var(--border);
+    border-radius:16px; max-width:560px; width:100%;
+    padding:36px 32px; box-shadow:0 4px 20px rgba(0,0,0,0.06);
+  }
+  .badge{
+    display:inline-block; font-size:12px; font-weight:600;
+    color:var(--accent); background:rgba(37,99,235,0.1);
+    padding:4px 10px; border-radius:999px; margin-bottom:14px;
+  }
+  h1{ font-size:26px; margin:0 0 6px; }
+  .ver{ color:var(--muted); font-size:14px; margin-bottom:20px; }
+  p.desc{ color:var(--muted); line-height:1.6; font-size:15px; }
+  ul.features{ padding-left:20px; color:var(--text); font-size:14.5px; line-height:1.8; margin:16px 0 24px; }
+  .btn{
+    display:block; text-align:center; text-decoration:none;
+    background:var(--accent); color:#fff; font-weight:600;
+    padding:14px 20px; border-radius:10px; font-size:15.5px;
+    transition:background .15s ease;
+  }
+  .btn:hover{ background:var(--accent-dark); }
+  .note{
+    margin-top:22px; padding:14px 16px; background:rgba(37,99,235,0.07);
+    border-left:3px solid var(--accent); border-radius:6px;
+    font-size:13.5px; color:var(--muted); line-height:1.6;
+  }
+  .steps{ margin-top:28px; }
+  .steps h2{ font-size:15px; margin-bottom:10px; }
+  .steps ol{ padding-left:20px; font-size:14px; color:var(--muted); line-height:1.8; }
+  footer{ margin-top:28px; font-size:12.5px; color:var(--muted); text-align:center; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <span class="badge">Revit Add-in</span>
+    <h1>AutoDimToGrid</h1>
+    <div class="ver">Phiên bản 1.0.2 · Revit 2024</div>
+
+    <p class="desc">
+      Bộ công cụ tự động tạo Dimension tới trục Grid gần nhất, chẩn đoán Grid trùng vị trí,
+      và hỗ trợ Link/đọc file CAD để dựng nhanh Tường – Dầm – Cột trong Revit.
+    </p>
+
+    <ul class="features">
+      <li><strong>Dim tới Grid</strong> — tự động tạo Dimension từ dầm/tường/cột tới trục Grid song song gần nhất trong mặt bằng đang mở</li>
+      <li><strong>Tìm Grid trùng</strong> — quét toàn bộ Grid trong dự án, phát hiện các Grid tên khác nhau nhưng trùng vị trí hình học</li>
+      <li><strong>Link CAD Tự động</strong> — Link file CAD (DWG/DXF) vào model, tự căn Positioning khớp đúng Grid Revit, chọn Level, Import units, Colors, bật/tắt Layer ngay trong view</li>
+      <li><strong>Vẽ Dầm từ CAD</strong> — đọc đường nét từ CAD theo Layer chọn trước, tự động đặt Dầm theo tim hoặc theo cặp 2 mép dầm</li>
+      <li><strong>Vẽ Cột từ CAD</strong> — đọc hình học từ CAD theo Layer chọn trước, tự động đặt Cột theo tâm hình kín, giao điểm 2 đường tim, hoặc click điểm trực tiếp</li>
+    </ul>
+
+    <a class="btn" href="https://drive.google.com/uc?export=download&id=17uNA_iuWGv4n-X9CAzDTIMmoTRwvxuQb" target="_blank" rel="noopener">
+      ⬇ Tải AutoDimToGrid_Setup_1.0.2.exe
+    </a>
+
+    <div class="note">
+      ⚠️ <strong>Đóng Revit trước khi cài đặt.</strong> Installer sẽ tự động ghi đè bản cũ (nếu có), không cần gỡ cài đặt trước.
+    </div>
+
+    <div class="steps">
+      <h2>Hướng dẫn cài đặt</h2>
+      <ol>
+        <li>Tải file cài đặt phía trên</li>
+        <li>Đóng Revit nếu đang mở</li>
+        <li>Chạy file <code>.exe</code> vừa tải, cho phép quyền Admin nếu được hỏi</li>
+        <li>Làm theo hướng dẫn cài đặt (Next → Install)</li>
+        <li>Mở lại Revit — tab <strong>AutoDimToGrid</strong> sẽ xuất hiện trên Ribbon</li>
+      </ol>
+    </div>
+
+    <footer>AUTOBIM · LTT-TOOL</footer>
+  </div>
+</body>
+</html>
